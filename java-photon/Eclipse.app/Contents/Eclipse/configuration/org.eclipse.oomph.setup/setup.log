@@ -1,0 +1,40 @@
+[2018-10-07 16:15:38] Executing bootstrap tasks
+[2018-10-07 16:15:38] Java(TM) SE Runtime Environment 9.0.4+11
+[2018-10-07 16:15:38] Product org.eclipse.products.epp.package.java.photon
+[2018-10-07 16:15:38] Bundle org.eclipse.oomph.setup 1.9.0.v20180529-0916, build=3551, branch=5a7202105cdec0e9bc9553799ba330ea58714ce5
+[2018-10-07 16:15:38] Bundle org.eclipse.oomph.setup.core 1.9.0.v20180529-0916, build=3551, branch=5a7202105cdec0e9bc9553799ba330ea58714ce5
+[2018-10-07 16:15:38] Bundle org.eclipse.oomph.setup.p2 1.9.0.v20180529-0916, build=3551, branch=5a7202105cdec0e9bc9553799ba330ea58714ce5
+[2018-10-07 16:15:38] Performing P2 Director (Eclipse IDE for Java Developers (Photon))
+[2018-10-07 16:15:38] Offline = false
+[2018-10-07 16:15:38] Mirrors = true
+[2018-10-07 16:15:38] Resolving 26 requirements from 3 repositories to /Users/kwilcox/Documents/java-photon/Eclipse.app/Contents/Eclipse
+[2018-10-07 16:15:38] Requirement epp.package.java [4.8.0,4.9.0)
+[2018-10-07 16:15:38] Requirement org.eclipse.platform.feature.group [4.8.0,4.9.0)
+[2018-10-07 16:15:38] Requirement org.eclipse.rcp.feature.group [4.8.0,4.9.0)
+[2018-10-07 16:15:38] Requirement org.eclipse.buildship.feature.group
+[2018-10-07 16:15:38] Requirement org.eclipse.eclemma.feature.feature.group
+[2018-10-07 16:15:38] Requirement org.eclipse.egit.feature.group
+[2018-10-07 16:15:38] Requirement org.eclipse.egit.mylyn.feature.group
+[2018-10-07 16:15:38] Requirement org.eclipse.jdt.feature.group
+[2018-10-07 16:15:38] Requirement org.eclipse.jgit.feature.group
+[2018-10-07 16:15:38] Requirement org.eclipse.m2e.feature.feature.group
+[2018-10-07 16:15:38] Requirement org.eclipse.m2e.logback.feature.feature.group
+[2018-10-07 16:15:38] Requirement org.eclipse.mylyn.bugzilla_feature.feature.group
+[2018-10-07 16:15:38] Requirement org.eclipse.mylyn.context_feature.feature.group
+[2018-10-07 16:15:38] Requirement org.eclipse.mylyn.git.feature.group
+[2018-10-07 16:15:38] Requirement org.eclipse.mylyn.hudson.feature.group
+[2018-10-07 16:15:38] Requirement org.eclipse.mylyn.ide_feature.feature.group
+[2018-10-07 16:15:38] Requirement org.eclipse.mylyn.java_feature.feature.group
+[2018-10-07 16:15:38] Requirement org.eclipse.mylyn.wikitext_feature.feature.group
+[2018-10-07 16:15:38] Requirement org.eclipse.mylyn_feature.feature.group
+[2018-10-07 16:15:38] Requirement org.eclipse.recommenders.mylyn.rcp.feature.feature.group
+[2018-10-07 16:15:38] Requirement org.eclipse.recommenders.news.rcp.feature.feature.group
+[2018-10-07 16:15:38] Requirement org.eclipse.recommenders.rcp.feature.feature.group
+[2018-10-07 16:15:38] Requirement org.eclipse.recommenders.snipmatch.rcp.feature.feature.group
+[2018-10-07 16:15:38] Requirement org.eclipse.tips.feature.feature.group
+[2018-10-07 16:15:38] Requirement org.eclipse.wst.xml_ui.feature.feature.group
+[2018-10-07 16:15:38] Requirement org.eclipse.oomph.setup.feature.group
+[2018-10-07 16:15:38] Repository http://download.eclipse.org/technology/epp/packages/photon
+[2018-10-07 16:15:38] Repository http://download.eclipse.org/releases/photon/201806271001
+[2018-10-07 16:15:38] Repository http://download.eclipse.org/oomph/updates/milestone/latest
+[2018-10-07 16:15:43] 

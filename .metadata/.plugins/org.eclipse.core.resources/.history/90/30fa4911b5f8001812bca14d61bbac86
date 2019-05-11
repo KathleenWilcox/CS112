@@ -1,0 +1,199 @@
+package friends;
+
+import structures.Queue;
+import structures.Stack;
+
+import java.util.*;
+
+public class Friends {
+
+	/**
+	 * Finds the shortest chain of people from p1 to p2.
+	 * Chain is returned as a sequence of names starting with p1,
+	 * and ending with p2. Each pair (n1,n2) of consecutive names in
+	 * the returned chain is an edge in the graph.
+	 * 
+	 * @param g Graph for which shortest chain is to be found.
+	 * @param p1 Person with whom the chain originates
+	 * @param p2 Person at whom the chain terminates
+	 * @return The shortest chain from p1 to p2. Null if there is no
+	 *         path from p1 to p2
+	 */
+	private static ArrayList<String> findPath(Graph g, ArrayList<Edge> bfsPaths, String p1, String p2)
+	{
+		ArrayList<String> shortest = new ArrayList<>();
+
+		int start = g.map.get(p1);
+		int ptr = bfsPaths.size() - 1;
+		int search = g.map.get(p2);
+
+		while (ptr >= 0) {
+			if (bfsPaths.get(ptr).v2 == search) {
+				shortest.add(0, g.members[search].name);
+				search = bfsPaths.get(ptr).v1;
+
+				if (search == start) {
+
+					shortest.add(0, g.members[search].name);
+					break;
+				}
+			}
+
+			ptr--;
+		}
+
+		return shortest;
+	}
+	public static ArrayList<String> shortestChain(Graph g, String p1, String p2) {
+		
+		/** COMPLETE THIS METHOD **/
+
+		// FOLLOWING LINE IS A PLACEHOLDER TO MAKE COMPILER HAPPY
+		// CHANGE AS REQUIRED FOR YOUR IMPLEMENTATION
+
+		Boolean[] visited = new Boolean[g.members.length]; // created arr to keep track of visited nodes
+		Queue<Integer> q = new Queue<>(); // q for bfs
+		ArrayList<String> result = new ArrayList<>();
+		ArrayList<Edge> edges = new ArrayList<>();
+		
+		for(int i = 0; i < visited.length; i++)
+		{
+			visited[i] = false;
+		}
+
+		// mark first one as visited
+
+		if (p1.equals(p2)) { 
+			return null;
+		}
+
+		int first = g.map.get(p1);
+		q.enqueue(first); // enqueue first item
+		visited[first] = true; // mark it as visited
+
+		while (!q.isEmpty()) {
+			int curr = q.dequeue(); // dequeue first item in q
+			visited[curr] = true; // mark this person as visited in corresponding position in array
+			Person currPerson = g.members[curr]; // obtain current person at int curr
+			//parents.add(currPerson.name); // add the name of this person to parents queue to mark it as a point in path
+											// to get to destination
+
+			Friend ptr = currPerson.first; // make ptr to first friend of the person (in adj LL)
+			if (currPerson.name.equals(p2)) { // if the current name is equal to the destination
+				Edge edgeofVerts = new Edge(curr, ptr.fnum);
+				edges.add(edgeofVerts);
+				break;
+				
+			}
+			while (ptr != null) {
+
+				if (!visited[ptr.fnum]) { // if the friend has not been visited yet
+					String neighbor = g.members[ptr.fnum].name;
+					q.enqueue(ptr.fnum); // enqueue it
+					visited[ptr.fnum] = true;
+					
+					if(neighbor.equals(p2))
+					{
+						Edge edgeofVerts = new Edge(curr, ptr.fnum);
+						edges.add(edgeofVerts);
+						break;
+					}
+				
+					Edge edgeofVerts = new Edge(curr, ptr.fnum);
+					edges.add(edgeofVerts);
+					
+					ptr = ptr.next; 
+				}
+			}
+		}
+		
+		result = findPath(g, edges, p1, p2);
+
+		return result;
+	}
+	
+	/**
+	 * Finds all cliques of students in a given school.
+	 * 
+	 * Returns an array list of array lists - each constituent array list contains
+	 * the names of all students in a clique.
+	 * 
+	 * @param g Graph for which cliques are to be found.
+	 * @param school Name of school
+	 * @return Array list of clique array lists. Null if there is no student in the
+	 *         given school
+	 */
+	private static ArrayList<ArrayList<String>> dfs (int v, Graph g, Boolean[] visited, String school, ArrayList<ArrayList<String>> cliques, int numCliques, boolean sameSchool)
+	{		
+
+		Person curr = g.members[v];
+
+		if (!visited[v]) {
+			visited[v] = true;
+		}
+
+		if (curr.school.equals(school)) {
+			if (sameSchool == false) {
+				numCliques++;
+			}
+			cliques.get(numCliques).add(curr.name);
+		}
+
+		for (Friend nbr = curr.first; nbr != null; nbr = nbr.next) {
+
+			dfs(nbr.fnum, g, visited, school, cliques, numCliques, sameSchool);
+
+		}
+
+		return cliques;
+
+	}
+		
+		
+	
+	
+		
+	public static ArrayList<ArrayList<String>> cliques(Graph g, String school) {
+		
+		/** COMPLETE THIS METHOD **/
+		Boolean[] visited = new Boolean[g.members.length];
+		ArrayList<ArrayList<String>> cliques = new ArrayList<>();
+		boolean sameSchool = false;
+		int numCliques = 0;
+		
+		for(int i = 0; i < visited.length; i++)
+		{
+			visited[i] = false;
+		}
+		
+		for(int k = 0; k < g.members.length; k++)
+		{
+			dfs(k, g, visited, school, cliques, numCliques, sameSchool  );
+		}
+		
+		return cliques;
+	}
+		
+		// FOLLOWING LINE IS A PLACEHOLDER TO MAKE COMPILER HAPPY
+		// CHANGE AS REQUIRED FOR YOUR IMPLEMENTATION
+		
+		
+	
+	
+	/**
+	 * Finds and returns all connectors in the graph.
+	 * 
+	 * @param g Graph for which connectors needs to be found.
+	 * @return Names of all connectors. Null if there are no connectors.
+	 */
+	public static ArrayList<String> connectors(Graph g) {
+		
+		/** COMPLETE THIS METHOD **/
+		
+		// FOLLOWING LINE IS A PLACEHOLDER TO MAKE COMPILER HAPPY
+		// CHANGE AS REQUIRED FOR YOUR IMPLEMENTATION
+		return null;
+		
+	}
+}
+

@@ -98,8 +98,6 @@ public class Expression {
 		}
 	}
 
-		System.out.println("this is the variables array list: " + vars);
-		System.out.println("this is the array array list: " + arrays);
 	}
 
 	/**

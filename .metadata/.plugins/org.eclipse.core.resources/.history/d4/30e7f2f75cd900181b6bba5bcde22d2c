@@ -1,0 +1,168 @@
+package trie;
+
+import java.util.ArrayList;
+
+/**
+ * This class implements a Trie. 
+ * 
+ * @author Sesh Venugopal
+ *
+ */
+public class Trie {
+	
+	// prevent instantiation
+	private Trie() { }
+	
+	/**
+	 * Builds a trie by inserting all words in the input array, one at a time,
+	 * in sequence FROM FIRST TO LAST. (The sequence is IMPORTANT!)
+	 * The words in the input array are all lower case.
+	 * 
+	 * @param allWords Input array of words (lowercase) to be inserted.
+	 * @return Root of trie with all words inserted from the input array
+	 */
+	public static TrieNode buildTrie(String[] allWords) {
+		/** COMPLETE THIS METHOD **/
+		String sub = "";
+		String notalike1 = "";
+		String notalike2 = "";
+
+		TrieNode root = new TrieNode(null, null, null); // empty root
+		
+				
+		for(int i = 1; i < allWords.length; i ++) // run the string array through a for loop
+		{	
+			int count = 0;  
+			
+			while(!allWords[i].equals(null) && !similar.equals(null)) //runs the next word in list in a loop w first word
+			{	
+				if(allWords[i].charAt(count) == similar.charAt(count)) { //compares each char in words and sees if they are equal
+				 sub += similar.charAt(count); //if the chars are equal, add it to the substring
+			} else {
+				notalike1 += similar.charAt(count); //if they are not equal, add the char of the first word to separate substr
+				notalike2 += allWords[i].charAt(count); // add char of second word to separate substr
+			}
+			
+			count++; // increment count to compare the next two letters
+		}
+			
+			if(sub.length() > 0) // if there were any similarities in the words, this length will be at least 1
+			{	
+				int counter = 0;
+				String newsub = "";
+				
+				//if(root.substr.toString().length() > sub.length()) // if the length of sub is less, check for similarity
+				//{
+					while(sub != null && sub.charAt(counter) == root.substr.toString().charAt(counter)) // if chars are equal
+					{
+						newsub += sub.charAt(counter); // add this letter to the updated substring
+						counter++;
+					}	
+				//}
+				
+					if(newsub.length() > 0) // if the length is greater than zero
+					{
+						 indexOfFirst.startIndex = (short) newsub.charAt(0); // make index obj start index equal to start of newsub
+						 indexOfFirst.endIndex = (short) newsub.charAt(newsub.length() - 1); // end index last char of newsub
+						 root.substr = indexOfFirst; // update substring of the node 
+					}
+					
+					
+					/*	
+						 if(notalike1.length() > 0) // if the notalike1's length is greater than zero
+						 {		 
+							 Indexes notAlikeIndex1 = new Indexes(i-1, (short) 0 , (short) ((short) notalike1.length() - 1) );  // make indexes of sub
+							 TrieNode notAlike1 = new TrieNode(notAlikeIndex1, null, null); // create trieNode with indexes of notalike1
+							 root.firstChild = notAlike1; //make this the firstchild of the first node 
+						 }
+						 
+						 if(notalike2.length() > 0) // if notalike2's length is greater than zero
+						 {
+							 Indexes notAlikeIndex2 = new Indexes(i, (short) 0 , (short) ((short) notalike1.length() - 1) ); //make indexes
+							 TrieNode notAlike2 = new TrieNode(notAlikeIndex2, null, null); //make trienode
+							 notAlike2.sibling = notAlike2; // make it second child
+						 }
+					}
+					*/
+					else {
+						
+						
+					}
+			
+				
+			}
+		}
+	
+	
+		return null;
+		
+	}
+	
+	
+
+	
+	/**
+	 * Given a trie, returns the "completion list" for a prefix, i.e. all the leaf nodes in the 
+	 * trie whose words start with this prefix. 
+	 * For instance, if the trie had the words "bear", "bull", "stock", and "bell",
+	 * the completion list for prefix "b" would be the leaf nodes that hold "bear", "bull", and "bell"; 
+	 * for prefix "be", the completion would be the leaf nodes that hold "bear" and "bell", 
+	 * and for prefix "bell", completion would be the leaf node that holds "bell". 
+	 * (The last example shows that an input prefix can be an entire word.) 
+	 * The order of returned leaf nodes DOES NOT MATTER. So, for prefix "be",
+	 * the returned list of leaf nodes can be either hold [bear,bell] or [bell,bear].
+	 *
+	 * @param root Root of Trie that stores all words to search on for completion lists
+	 * @param allWords Array of words that have been inserted into the trie
+	 * @param prefix Prefix to be completed with words in trie
+	 * @return List of all leaf nodes in trie that hold words that start with the prefix, 
+	 * 			order of leaf nodes does not matter.
+	 *         If there is no word in the tree that has this prefix, null is returned.
+	 */
+	public static ArrayList<TrieNode> completionList(TrieNode root,
+										String[] allWords, String prefix) {
+		/** COMPLETE THIS METHOD **/
+		
+		// FOLLOWING LINE IS A PLACEHOLDER TO ENSURE COMPILATION
+		// MODIFY IT AS NEEDED FOR YOUR IMPLEMENTATION
+		return null;
+	}
+	
+	public static void print(TrieNode root, String[] allWords) {
+		System.out.println("\nTRIE\n");
+		print(root, 1, allWords);
+	}
+	
+	private static void print(TrieNode root, int indent, String[] words) {
+		if (root == null) {
+			return;
+		}
+		for (int i=0; i < indent-1; i++) {
+			System.out.print("    ");
+		}
+		
+		if (root.substr != null) {
+			String pre = words[root.substr.wordIndex]
+							.substring(0, root.substr.endIndex+1);
+			System.out.println("      " + pre);
+		}
+		
+		for (int i=0; i < indent-1; i++) {
+			System.out.print("    ");
+		}
+		System.out.print(" ---");
+		if (root.substr == null) {
+			System.out.println("root");
+		} else {
+			System.out.println(root.substr);
+		}
+		
+		for (TrieNode ptr=root.firstChild; ptr != null; ptr=ptr.sibling) {
+			for (int i=0; i < indent-1; i++) {
+				System.out.print("    ");
+			}
+			System.out.println("     |");
+			print(ptr, indent+1, words);
+		}
+	}
+ }
